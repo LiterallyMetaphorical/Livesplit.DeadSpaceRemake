@@ -33,28 +33,36 @@ set "Memory Scan Options" to Dead Space.exe. Set Scan Type to "All"
 Scan for 0 on main menu, 1 while in game, 0 on pause menu. 
 Continue this process until you find a static address starting with "4" and ending with "4"
 
+string map
+
+load up a save where you return to the Flight Lounge for the second time. Feel free to DM Meta and ask for "Find Map Pointer" save
+Standing in the flight lounge, scan for a normal string "flightlounge".  Walk into the hallway with the bathroom and type "restroomcorridor"
+There should be one address, add it to the table but then modify the last character from a "D" to a "0"
+Pointer scan, and try to match the offsets.
 */
 
 state("Dead Space", "Steam v1.0")
 {
-    bool    loading : 0x5269494;
-    string3 chapter : 0x4BF75A6;
-    float   IGT     : 0x52AF390;
-    float   X       : 0x57045A0;
-    float   Y       : 0x57045A4;
-    float   Z       : 0x57045A8;
-    float   inGame  : 0x4DB0084;
+    bool     loading : 0x5269494;
+    string3  chapter : 0x4BF75A6;
+    string30 map     : 0x04C570A0, 0x10, 0x58, 0xB8, 0x0;
+    float    IGT     : 0x52AF390;
+    float    X       : 0x57045A0;
+    float    Y       : 0x57045A4;
+    float    Z       : 0x57045A8;
+    float    inGame  : 0x4DB0084;
 }
 
 state("Dead Space", "Origin v1.0")
 {
-    bool 	loading : 0x52C8A14;
-	string3 chapter : 0x4C52576;	
-	float	IGT		: 0x530E910;
-	float	X		: 0x5776120;
-	float	Y		: 0x5776124;
-	float	Z		: 0x5776128;
-    float   inGame  : 0x4E0B024;
+    bool 	 loading : 0x52C8A14;
+	string3  chapter : 0x4C52576;
+    string30 map     : 0x4CB2070, 0x10, 0x58, 0xB8, 0x0;	
+	float	 IGT     : 0x530E910;
+	float	 X		 : 0x5776120;
+	float	 Y		 : 0x5776124;
+	float	 Z		 : 0x5776128;
+    float    inGame  : 0x4E0B024;
 }
 
 init
@@ -95,7 +103,7 @@ startup
 	vars.completedSplits = new List<string>();
 	
 	vars.splits = new List<string>()
-	{"01","02","03","04","05","06","07","08","09","10","11","12"};
+	{"02","03","04","05","06","07","08","09","10","11","12"};
 }
 
 onStart
@@ -119,7 +127,7 @@ update
 
 start
 {
-	return current.inGame == 1 && current.loading && current.IGT < 10;
+	return current.map == "Outside rooms" && current.loading && current.inGame == 1;
 }
 
 //return !current.loading && current.X > -15f && current.X < -13f && current.Y < 56f && current.Y > 55f && current.Z < -13 && current.Z > -15;
