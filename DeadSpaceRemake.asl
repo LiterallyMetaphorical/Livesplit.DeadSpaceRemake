@@ -55,14 +55,26 @@ state("Dead Space", "Steam v1.0")
 
 state("Dead Space", "Origin v1.0")
 {
-        bool 	 loading : 0x52C8A14;
+    bool 	 loading : 0x52C8A14;
 	string3  chapter : 0x4C52576;
-        string99 map     : 0x4CB2070, 0x10, 0x58, 0xB8, 0x0;	
+    string30 map     : 0x4CB2070, 0x10, 0x58, 0xB8, 0x0;	
 	float	 IGT     : 0x530E910;
-	float	 X       : 0x5776120;
-	float	 Y       : 0x5776124;
-	float	 Z	 : 0x5776128;
-        float    inGame  : 0x4E0B024;
+	float	 X		 : 0x5776120;
+	float	 Y		 : 0x5776124;
+	float	 Z		 : 0x5776128;
+    float    inGame  : 0x4E0B024;
+}
+
+state("Dead Space", "Steam v1.1")
+{
+    bool     loading : 0x5269494;
+    string3  chapter : 0x4BF75A6;
+    string99 map     : 0x04C570B0, 0x10, 0x58, 0xB8, 0x0;
+    float    IGT     : 0x52AF390;
+    float    X       : 0x57045A0;
+    float    Y       : 0x57045A4;
+    float    Z       : 0x57045A8;
+    float    inGame  : 0x4DB0084;
 }
 
 init
@@ -74,6 +86,9 @@ switch (modules.First().ModuleMemorySize)
             break;
 		case 412131328: 
             version = "Origin v1.0";
+            break;
+        case 430182400: 
+            version = "Steam v1.1";
             break;
     default:
         print("Unknown version detected");
