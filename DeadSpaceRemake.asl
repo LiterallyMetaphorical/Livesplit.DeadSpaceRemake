@@ -1,4 +1,9 @@
-//Credit to DementedSalad for Origin stuff, and Meta for Steam stuff
+// Dead Space Remake Load Remover & Autosplitter Version 1.1.0 (02/02/2023)
+// Supports LRT & Autosplits
+// Splits can be obtained from
+// Script by Meta & TheDementedSalad
+// Steam Pointers by Meta
+// EA Pointers by TheDementedSalad
 
 /*
 Scanning Best Practices:
@@ -92,20 +97,21 @@ state("Dead Space", "Origin v1.1")
 
 state("Dead Space", "Steam v1.2")
 {
-    bool     loading : 0x5269494;
-    string3  chapter : 0x4BF75A6;
-    string99 map     : 0x04C580B0, 0x10, 0x58, 0xB8, 0x0;
-    float    IGT     : 0x52AF390;
-    float    X       : 0x57045A0;
-    float    Y       : 0x57045A4;
-    float    Z       : 0x57045A8;
-    float    inGame  : 0x4DB0084;
+    bool     	loading 	: 0x526A494;
+	ushort		loadBuff	: 0x4DB109C;
+    float    	IGT			: 0x52B0430;
+    float    	X			: 0x5705620;
+    float    	Y			: 0x5705624;
+    float    	Z			: 0x5705628;
+    float    	inGame		: 0x4DB1094;
+	string2 	chapter		: 0x4BF85A6;
+	string99 	map			: 0x04C580B0, 0x10, 0x58, 0xB8, 0x0;
 }
 
 state("Dead Space", "Origin v1.2")
 {
     bool 		loading 	: 0x52CCA14;
-	short		loadBuff	: 0x4E0F03C;
+	ushort		loadBuff	: 0x4E0F03C;
 	float		IGT			: 0x53129B0;
 	float		X			: 0x577A220;
 	float		Y			: 0x577A224;
@@ -204,7 +210,7 @@ split
 
 isLoading
 {
-    return current.loading;
+    return current.loading || current.loadBuff == 0 || current.inGame == 0;
 }
 
 exit
