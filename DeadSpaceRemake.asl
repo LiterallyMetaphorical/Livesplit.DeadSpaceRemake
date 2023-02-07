@@ -198,7 +198,7 @@ update
 
 start
 {
-	return current.map == "Outside rooms" && current.loading && current.inGame == 1;
+	return current.map == "Hangar.Rooms.ChaseHall" && !current.loading && old.loading && current.chapter == "01";
 }
 
 //return !current.loading && current.X > -15f && current.X < -13f && current.Y < 56f && current.Y > 55f && current.Z < -13 && current.Z > -15;
