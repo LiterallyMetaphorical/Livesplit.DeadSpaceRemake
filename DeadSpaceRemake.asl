@@ -124,6 +124,18 @@ state("Dead Space", "Origin v1.2")
     string30	map		: 0x4CB6080, 0x10, 0x58, 0xB8, 0x0;
 }
 
+state("Dead Space", "Steam v1.3")
+{
+    bool     	loading 	: 0x52694F4;
+    ushort	loadBuff	: 0x4DB00EC;
+    float    	X		: 0x5728A80;
+    float    	Y		: 0x5728A84;
+    float    	Z		: 0x5728A88;
+    float    	inGame		: 0x4DB00E4;
+    string2 	chapter		: 0x4BF75E6;
+    string99 	map		: 0x04C570F0, 0x10, 0x58, 0xB8, 0x0;
+}
+
 state("Dead Space", "Origin v1.3")
 {
     bool 	loading 	: 0x52C6A74;
@@ -157,6 +169,9 @@ switch (modules.First().ModuleMemorySize)
             break;
         case 402546688: 
             version = "Origin v1.2";
+            break;
+        case 439357440: 
+            version = "Steam v1.3";
             break;
 	case 416350208 : 
             version = "Origin v1.3";
