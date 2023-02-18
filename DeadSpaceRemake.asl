@@ -122,6 +122,7 @@ state("Dead Space", "Steam v1.3")
     float    	inGame		: 0x4DB00E4;
     string2 	chapter		: 0x4BF75E6;
     string99 	map		: 0x04C570F0, 0x10, 0x58, 0xB8, 0x0;
+    string9	final      	: 0x53F2E08, 0x70, 0x30, 0xF9;
 }
 
 state("Dead Space", "Origin v1.3")
@@ -131,7 +132,7 @@ state("Dead Space", "Origin v1.3")
     float 	inGame		: 0x4E09074;
     string2 	chapter 	: 0x4C505A6;
     string30 	map		: 0x4CB00B0, 0x10, 0x58, 0xB8, 0x0;
-    string9	final      	: 0x23AEEF0, 0xBC1;
+    string9	final      	: 0x5450308, 0x70, 0x30, 0xF9;
 }
 
 init
