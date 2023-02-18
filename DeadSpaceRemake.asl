@@ -146,6 +146,7 @@ state("Dead Space", "Origin v1.3")
     float 	inGame		: 0x4E0F034;
     string2 	chapter 	: 0x4C56576;
     string30 	map		: 0x4CB00B0, 0x10, 0x58, 0xB8, 0x0;
+    string9	final       	: 0x23AEEF0, 0xBC1;
 }
 
 init
@@ -238,6 +239,10 @@ split
 	if (current.chapter != old.chapter && vars.splits.Contains(current.chapter) && !vars.completedSplits.Contains(current.chapter)){
 		vars.completedSplits.Add(current.chapter);
 		return true;
+	}
+	
+	if(current.final == "CH12_0960" && old.final != "CH12_0960"){
+		return true;		
 	}
 }
 
