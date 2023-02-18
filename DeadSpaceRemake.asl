@@ -63,10 +63,6 @@ state("Dead Space", "Origin v1.0")
 {
     bool 	loading 	: 0x52C8A14;
     ushort   	loadBuff 	: 0x4E0B02C;
-    float	IGT     	: 0x530E910;
-    float	X		: 0x5776120;
-    float	Y		: 0x5776124;
-    float	Z		: 0x5776128;
     float   	inGame  	: 0x4E0B024;
     string3  	chapter 	: 0x4C52576;
     string30 	map     	: 0x4CB2070, 0x10, 0x58, 0xB8, 0x0;
@@ -89,10 +85,6 @@ state("Dead Space", "Origin v1.1")
 {
     bool         loading	: 0x52C9A14;
     ushort       loadBuff	: 0x4E0C03C;
-    float        IGT		: 0x530F910;
-    float        X		: 0x5777120;
-    float        Y		: 0x5777124;
-    float        Z		: 0x5777128;
     float        inGame		: 0x4E0C034;
     string2      chapter	: 0x4C53576;
     string30     map		: 0x4CB3080, 0x10, 0x58, 0xB8, 0x0;
@@ -115,10 +107,6 @@ state("Dead Space", "Origin v1.2")
 {
     bool 	loading 	: 0x52CCA14;
     ushort	loadBuff	: 0x4E0F03C;
-    float	IGT		: 0x53129B0;
-    float	X		: 0x577A220;
-    float	Y		: 0x577A224;
-    float	Z		: 0x577A228;
     float 	inGame		: 0x4E0F034;
     string2	chapter 	: 0x4C56576;
     string30	map		: 0x4CB6080, 0x10, 0x58, 0xB8, 0x0;
@@ -140,13 +128,10 @@ state("Dead Space", "Origin v1.3")
 {
     bool 	loading 	: 0x52C6A74;
     ushort	loadBuff	: 0x4E0907C;
-    float	X		: 0x5798680;
-    float	Y		: 0x5798684;
-    float	Z		: 0x5798688;
-    float 	inGame		: 0x4E0F034;
-    string2 	chapter 	: 0x4C56576;
+    float 	inGame		: 0x4E09074;
+    string2 	chapter 	: 0x4C505A6;
     string30 	map		: 0x4CB00B0, 0x10, 0x58, 0xB8, 0x0;
-    string9	final       	: 0x23AEEF0, 0xBC1;
+    string9	final      	: 0x23AEEF0, 0xBC1;
 }
 
 init
